@@ -1,0 +1,30 @@
+# llm-wiki config — read by the wiki-* skills and their scripts.
+# Flat "key: value" lines only (the scripts use a tiny parser, not a YAML library).
+name: {{NAME}}
+title: "{{TITLE}}"
+created: {{DATE}}
+
+# Layout (relative to this file)
+wiki_dir: wiki
+raw_dir: raw
+outputs_dir: outputs
+log_file: log.md
+
+# Page types -> folder under wiki_dir. "source" must stay.
+types: source=sources, entity=entities, concept=concepts, analysis=analyses
+
+# qmd collections (machine-local; re-run wiki-setup on a new machine to re-register)
+qmd_wiki_collection: {{WIKI_COLLECTION}}
+qmd_raw_collection: {{RAW_COLLECTION}}
+
+# supervised | autonomous
+mode: {{MODE}}
+
+# Commit to git after each ingest / filed query / lint fix
+auto_commit: true
+
+# Append a one-entry log line for every answered query
+log_queries: true
+
+# Lint: flag overview.md once this many sources were ingested after its last update
+overview_drift_threshold: 5
